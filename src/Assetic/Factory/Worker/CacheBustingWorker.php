@@ -62,6 +62,7 @@ class CacheBustingWorker implements WorkerInterface
             foreach ($asset as $i => $leaf) {
                 $sourcePath = $leaf->getSourcePath();
                 hash_update($hash, $sourcePath ?: $i);
+                hash_update($hash, $factory->getLastModified($leaf));
             }
         }
 
